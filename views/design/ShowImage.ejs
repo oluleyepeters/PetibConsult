@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+	<title><%=design.name%></title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-config" content="/public/favicon/browserconfig.xml">
+<meta name="theme-color" content="#3d405d">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="3D, 2D, <%=design.name%>">
+    <meta name="description" content="Checkout the design and make the courageous and bold step of contacting us @ +2347067935567 and get your job done in quick time">
+    <meta name="robots">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap4.css">
+	<!-- <link rel="stylesheet" type="text/css" href="app.css"> -->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/nav.css">
+</head>
+<body>	
+	<nav class="navbar bg-dark navbar-dark navbar-expand-md">
+		<a href="/" class="navbar-brand nav-link nav-item">
+		<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
+		Petib</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" 
+		data-target="#navbarCollapse" aria-controls="navbarCollapse"
+		aria-expanded="false" aria-label="toggle-navigatio">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+		<div class="navbar-nav">
+			<a href="/aboutUs" class="nav-link nav-item active">About Us</a>
+		</div>
+		<div class="navbar-nav ml-auto">
+			<% if(!currentUser){ %>
+			<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
+			<a href="/register" class="nav-link nav-item">Sign-Up</a>
+			<% } else { %>
+			<a href="#" class="nav-link nav-item active"><%=currentUser.username %></a>
+			<a href="/logout" class="nav-link nav-item">Logout</a>
+			<% } %>	
+		</div>
+			</div>
+		</nav>
+		<div class="container">
+		<% if(error && error.length > 0) {%>
+		<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
+		<% } %>
+		<% if(success && success.length > 0) {%>
+		<div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
+		<% } %>
+	</div>
+	<div class="container mt-3 mb-3">
+            <div class="mx-auto">
+				<div class="row">
+					<div class="col-lg-6 col-md-7">
+						<img class="img-thumbnail d-inline-block mx-auto" src="<%=design.image%>">
+					</div>
+					<div class="col-lg-6 col-md-5">
+						<h4 class="mb-3"> <%=design.name%> </h4>
+						<p><%=design.author.username%></p>
+						<%if(currentUser && design.author.id.equals(currentUser._id)){%>
+							<div>
+								<button class="btn btn-primary btn-sm">
+								<a href="/building-design/<%=design._id %>/edit" class="text-white" role="button"> Edit Campground</a>
+								</button>
+								<form class="d-inline" action="/building-design/<%=design._id%>?_method=DELETE" method='POST'>
+								<button class="btn btn-danger btn-sm">Delete</button>
+								</form>
+							</div>
+						<% } %>
+					</div>
+				</div>
+			<br>
+			<button class="btn btn-primary btn-sm">
+				<a href="/building-design/<%=design._id %>/comments/new" class="text-white" role="button">+ Comment</a>
+			</button>
+		<br>
+		<% design.comments.forEach(function(descom){%>
+		<div class="w-75 mt-3">
+			<p><strong><%=descom.author.username%></strong></p>
+			<p><%=descom.text%></p>
+		
+		<% if (currentUser.username=descom.author.username){%>
+		<div>
+		<button class="btn btn-sm btn-primary" role="button">
+			<a href="/design/<%=design._id%>/comments/<%=descom._id%>/edit" class="text-white">Edit</a>
+		</button>
+		<form class="d-inline" action="/design/<%=design._id %>/comments/<%=descom._id%>?_method=DELETE" method='POST'>
+			<button class="btn btn-danger btn-sm">Delete</button>
+			</form>
+		</div>
+		<% } %>
+		</div>
+		<%})%>
+		<br>
+        </div>
+	</div>
+	<div class="navv">
+	<nav class="navbar bg-info navbar-dark">
+		<a href="/" class="navbar-brand nav-link nav-item">
+		<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
+		Petib</a>
+		<div class="navbar-nav">
+			<a href="/aboutUs" class="nav-link nav-item active">About Us</a>
+            <address>
+                Contact Us:
+                <br/>
+                    +2347067935567
+                <br/>
+                    oluleyepeters@gmail.com
+                </address>
+		</div>
+	</nav>
+	</div>
+	</div>
+	<script src="javascript/jquery-3.3.1.min.js"></script>
+	<script src="javascript/bootstrap.js"></script>
+	<script src="javascript/building.js"></script>
+</body>
+</html>
+<div class="modal" aria-hidden='true' aria-labelledby='exa' role='dialog' id='modalexa'>
+	<div class="modal-dialog modal-dialog-centered" role='document'>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="text-left">Login</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<form action="/login" method="POST">
+			<div class="container">
+			<div class="form-group">
+					<label for="modemail">Email</label>
+					<br>
+					<input type="text" class="form-control" name="email" placeholder="Email" id="modemail">
+			</div>
+			<div class="form-group">
+				<label for="modpword">Password</label>
+				<br>
+				<input type="password" class="form-control" name="password" placeholder="password" id="modpword">
+			</div>
+			<div class="form-group">
+				<button id="modbutton" class="btn btn-sm btn-primary btn-block" type="submit">Login</button>
+				<p class="text-right text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    			
+			</div>
+			<div>	
+			<p class="text-center">Dont have an account yet? <a href="/register">Sign Up</a></p>
+			</div>
+		</form>
+		</div>	
+		</div>
+	</div>
+</div>

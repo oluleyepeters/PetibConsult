@@ -1,0 +1,15 @@
+in this we will be adding the edit and update route
+we have to add the method override, then require it in the app.js.
+then create the edit page
+we also have to delete the design
+this is done through a form that  will be added to the show page link
+we also want to make sure that if you are not authenicated you wont be able to delete or edit a design that is not yours
+firstly we have to check if the user is logged in
+then check if the user owns the campground
+we also have to enable hiding and showing the delete and update button
+Everything we did above should also be applied to the comment
+
+app.get('/*', function(req,res,next) {
+  req.session.flash = [];
+  next();
+});

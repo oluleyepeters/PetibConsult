@@ -1,0 +1,61 @@
+    <div>
+    <div class="sticky-bottom mt-5" style="justify-self:end;">
+    <nav class="navbar bg-info navbar-dark">
+            <a href="/" class="navbar-brand nav-link nav-item">
+            <img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
+             Petib</a>
+             <div class="navbar-nav">
+                 <!-- <a href="/About" class="nav-link nav-item active">About Us</a> -->
+                <address>
+                Contact Us:
+                <br/>
+                    +2347067935567
+                    <br/>
+                    oluleyepeters@gmail.com
+                </address>
+                </div>
+             </nav>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
+
+        <script src="javascript/jquery-3.3.1.min.js"></script>
+        <script src="javascript/bootstrap.js"></script>
+        <script src="javascript/building.js"></script>
+        
+        <div class="modal" aria-hidden='true' aria-labelledby='exa' role='dialog' id='modalexa'>
+            <div class="modal-dialog modal-dialog-centered" role='document'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="text-left">Login</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <form action="/login" method="POST">
+                    <div class="container">
+                    <div class="form-group">
+                            <label for="modemail">Email</label>
+                            <br>
+                            <input type="text" class="form-control" name="email" placeholder="Email" id="modemail">
+                    </div>
+                    <div class="form-group">
+                        <label for="modpword">Password</label>
+                        <br>
+                        <input type="password" class="form-control" name="password" placeholder="password" id="modpword">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary btn-block" id="modbutton" type="submit">Login</button>
+                        <p class="text-right text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    
+                    </div>
+                </form>
+                <div>	
+                    <p class="text-center">Dont have an account yet? <a href="/register">Sign Up</a></p>
+                </div>
+                </div>	
+                </div>
+            </div>
+        </div>

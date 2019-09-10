@@ -1,0 +1,37 @@
+<body>
+	<div>
+	<div>	
+	<nav class="navbar bg-dark mb-1 navbar-dark navbar-expand-md">
+		<a href="/" class="navbar-brand nav-link nav-item">
+		<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
+		Petib</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" 
+		data-target="#navbarCollapse" aria-controls="navbarCollapse"
+		aria-expanded="false" aria-label="toggle-navigatio">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+		<div class="navbar-nav">
+			<a href="/aboutUs" class="nav-link nav-item active">About Us</a>
+		</div>
+		<div class="navbar-nav ml-auto">
+			<% if(!currentUser){ %>
+			<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
+			<a href="/register" class="nav-link nav-item">Sign-Up</a>
+			<% } else { %>
+			<a href="#" class="nav-link nav-item active"><%=currentUser.username %></a>
+			<a href="/logout" class="nav-link nav-item">Logout</a>
+			<% } %>	
+		</div>
+		</div>
+		</nav>
+	</div>
+		<div class="container">
+		<% if(error && error.length > 0) {%>
+		<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
+		<% } %>
+		<% if(success && success.length > 0) {%>
+		<div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
+		<% } %>
+	</div>
+</div>
