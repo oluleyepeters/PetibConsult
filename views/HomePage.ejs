@@ -1,0 +1,54 @@
+<% include ./partials/header %>
+    <title>3D & 2D Designers, Cartographers and Environmental Managers  </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="3D, 2D, Cartographers, Mapping, GIS">
+    <meta name="description" content="PetibConsult is a consultamcy firm that render services in Environmental related Disciplines. Contact us now and enjoy the best sevices at the right price.">
+<% include ./partials/headers2 %>
+<% include ./partials/headers3 %>
+
+<div class="page">
+    <div class="hello"></div>
+        <div class="anime">
+            <p>Designs Done to Suit Your Taste</p>
+            <a href="/building-design" class="btn">View Designs</a>
+        </div>
+    </div>	
+<div>
+<div class="modal" aria-hidden='true' aria-labelledby='exa' role='dialog' id='modalexa'>
+	<div class="modal-dialog modal-dialog-centered" role='document'>
+		<div class="modal-content">			
+			<div class="modal-header">
+				<h4 class="text-left">Login</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<form action="/login" method="POST">
+			<div class="container">
+			<div class="form-group">
+					<label for="email">Email</label>
+					<br>
+					<input type="text" class="form-control" name="email" placeholder="Email" id="email">
+			</div>
+			<div class="form-group">
+				<label for="pword">Password</label>
+				<br>
+				<input type="password" class="form-control" name="password" placeholder="password" id="pword">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-sm btn-primary btn-block" type="submit">Login</button>
+			</div>
+			<div>	
+			<p class="text-center">Dont have an account yet? <a href="/register">Sign Up</a></p>
+			</div>
+		</form>
+		</div>	
+		</div>
+	</div>
+</div>
+
+<script src="javascript/jquery-3.3.1.min.js"></script>
+<script src="javascript/bootstrap.js"></script>
+<script src="javascript/building.js"></script>
+</body>
+</html>
