@@ -19,52 +19,42 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/nav.css"> 
 </head>
 <body>
-    <div style="display: flex; flex-direction: column;  justify-content: space-between; height: 100vh;">
-    <div>
-<<<<<<< HEAD
-	<nav class="navbar nav-bg navbar-dark navbar-expand-md">
-=======
-	<nav class="navbar bg-dark navbar-dark navbar-expand-md">
->>>>>>> 74169aff0e74f61a562c26e54e1956030516b263
-	<a href="/" class="navbar-brand nav-link nav-item">
-	<img src="images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
-	Petib</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" 
-	data-target="#navbarCollapse" aria-controls="navbarCollapse"
-	aria-expanded="false" aria-label="toggle-navigatio">
-	<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarCollapse">
-	<div class="navbar-nav">
-		<!-- <a href="/aboutUs" class="nav-link nav-item active">About Us</a> -->
-	</div>
-	<div class="navbar-nav ml-auto">
-		<% if(!currentUser){ %>
-		<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
-		<a href="/register" class="nav-link nav-item">Sign-Up</a>
-		<% } else { %>
-		<a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
-		<a href="/logout" class="nav-link nav-item">Logout</a>
-		<% } %>	
-	</div>
-		</div>
+    <nav class="navbar navbar-dark navbar-expand-md nav-bg">
+        <a href="/" class="navbar-brand nav-link nav-item">
+            <img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">Petib
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="toggle-navigatio">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="/aboutUs" class="nav-link nav-item active">About Us</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <% if(!currentUser){ %>
+                    <a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
+                    <a href="/register" class="nav-link nav-item">Sign-Up</a>
+                <% } else { %>
+                    <a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
+                    <a href="/logout" class="nav-link nav-item">Logout</a>
+                <% } %> 
+            </div>
+        </div>
     </nav>
+    <div class="container">
+        <% if(error && error.length > 0) {%>
+            <div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
+        <% } %>
+        <% if(success && success.length > 0) {%>
+            <div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
+        <% } %>
     </div>
-	<div class="container">
-	<% if(error && error.length > 0) {%>
-	<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
-	<% } %>
-	<% if(success && success.length > 0) {%>
-	<div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
-	<% } %>
-    </div>
-<<<<<<< HEAD
     <div style="margin: 0px auto; width: 90%">
 <!--         <p >Petib Consult was created to ease the pain of people by rendering services related to the built environment.
-=======
     <div class="container mt-5 mb-5" style="background-color :rgb(41, 175, 175)">
         <p >Petib Consult was created to ease the pain of people by rendering services related to the built environment.
->>>>>>> 74169aff0e74f61a562c26e54e1956030516b263
     These are services that revolves around urban-planning, architecture, Estate Management, Geogrephy and related
     allied professions. To be more specific example of services we render includes land-use planning, transportation planning,
     building design, landscape planning, landscape architecture, map making and 3D design.
@@ -75,15 +65,7 @@
     </div>
     <!-- <div style="align-item-self:"> -->
     <!-- <div class="mt-5" style="position: relative; bottom:0px; left: 0px; right: 0px;"> -->
-<%- include ./partials/footer %>
-=======
-    us wont be a regret for anyone.</p>
-    </div>
-
->>>>>>> 74169aff0e74f61a562c26e54e1956030516b263
-    <nav class="footer">
-        Contact Us :oluleyepeters@gmail.com
-    </nav>
+    <%- include ./partials/footer %>
 </body>
 </html>
 
@@ -114,7 +96,7 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-sm btn-primary btn-block" type="submit" id="modbutton">Login</button>
-                        <p class="text-right text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    
+                        <p class="text-center text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    
                     </div>
                 </form>
                 <div>

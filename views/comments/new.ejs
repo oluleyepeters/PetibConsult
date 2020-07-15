@@ -20,11 +20,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/nav.css"> 
 </head>
 <body>
-    <div style="display: flex; flex-direction: column;  justify-content: space-between; height: 100vh;">
-    <div>
-	<nav class="navbar bg-dark navbar-dark navbar-expand-md">
+	<nav class="navbar nav-bg navbar-dark navbar-expand-md">
 		<a href="/" class="navbar-brand nav-link nav-item">
-			<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">Petib
+			<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" 
 			data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -46,7 +44,6 @@
 			</div>
 		</div>
     </nav>
-    </div>
 	<div class="container">
 		<% if(error && error.length > 0) {%>
 			<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
@@ -99,7 +96,7 @@
 					</div>
 					<div class="form-group">
 						<button class="btn btn-sm btn-primary btn-block" id="modbutton" type="submit">Login</button>
-                        <p class="text-right text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    				
+                        <p class="text-center text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    				
 					</div>
 				</form>
 				<div>	
