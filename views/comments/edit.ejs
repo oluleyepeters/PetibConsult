@@ -44,7 +44,7 @@
 			</div>
 			<div class="navbar-nav ml-auto">
 				<% if(!currentUser){ %>
-					<a style="color: white" href="/login" data-target='#modalexa' data-toggle='modal' role='button'>Login</a>
+					<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
 					<a href="/register" class="nav-link nav-item">Sign-Up</a>
 				<% } else { %>
 					<a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
