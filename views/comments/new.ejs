@@ -16,13 +16,13 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="description" content="">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css"> 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/landing.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css"> 
 </head>
 <body>
 <div class='body-container'>
 <div class='page-container'>	
-	<nav class="navbar nav-bg navbar-dark navbar-expand-md">
+	<nav class="navbar navbar-dark navbar-expand-md nav-bg">
 		<a href="/" class="navbar-brand nav-link nav-item">
 			<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
 		</a>
@@ -33,14 +33,20 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<div class="navbar-nav">
-				<a href="/aboutUs" class="nav-link nav-item active">About Us</a>
+				<a href="/aboutUs" class="nav-link nav-item">About Us</a>
 			</div>
 			<div class="navbar-nav ml-auto">
 				<% if(!currentUser){ %>
 					<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
 					<a href="/register" class="nav-link nav-item">Sign-Up</a>
-				<% } else { %>
-					<a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
+				<% } else if(currentUser && currentUser.username === 'timi' ){ %>
+					<a href="#" class="nav-link nav-item ml-2"><%=currentUser.username %></a>
+					<a href="/building-design/new" class="nav-link nav-item">Add Design</a>		
+					<a href="/building-design" class="nav-link nav-item">View Design</a>							
+					<a href="/logout" class="nav-link nav-item">Logout</a>		
+				<% } else if(currentUser){ %>
+					<a href="#" class="nav-link nav-item ml-2"><%=currentUser.username %></a>
+					<a href="/building-design" class="nav-link nav-item">View Design</a>					
 					<a href="/logout" class="nav-link nav-item">Logout</a>
 				<% } %>	
 			</div>
@@ -48,15 +54,23 @@
     </nav>
 	<div class="container">
 		<% if(error && error.length > 0) {%>
-			<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
+			<div class="mt-1 alert alert-dismissible alert-danger text-center" role="alert"><strong><%=error%></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+    		</button>	
+			</div>
 		<% } %>
 		<% if(success && success.length > 0) {%>
-			<div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
+			<div class="mt-1 alert alert-dismissible alert-success text-center" role="alert"><strong><%=success%></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+    		</button>	
+			</div>
 		<% } %>
-    </div>	
+    </div>
     <div class="container mx-auto mt-5 mb-5" style="width:50%">
         <h4>Add comments to <%= Design.name %></h4>
-		<form action="/design/<%=Design._id%>/comments" method="post">
+		<form action="/building-design/<%=Design._id%>/comments" method="post">
 			<div class="form-group">	
 				<label class="form-control-label" for="comment">Comment</label>
 				<input class="form-control" type="text" name=comment[text] id="comment">

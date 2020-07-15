@@ -17,9 +17,11 @@
     <meta name="description" content="">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/landing.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css"> 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css"> 
 </head>
 <body>
+<div class='body-container'>
+<div class='page-container'>	
 <div class='body-container'>
 <div class='page-container'>	
 	<nav class="navbar navbar-dark navbar-expand-md nav-bg">
@@ -39,8 +41,14 @@
 				<% if(!currentUser){ %>
 					<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
 					<a href="/register" class="nav-link nav-item">Sign-Up</a>
-				<% } else { %>
-					<a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
+		 		<% } else if(currentUser && currentUser.username === 'timi' ){ %>
+					<a href="#" class="nav-link nav-item ml-2"><%=currentUser.username %></a>
+					<a href="/building-design/new" class="nav-link nav-item">Add Design</a>		
+					<a href="/building-design" class="nav-link nav-item">View Design</a>							
+					<a href="/logout" class="nav-link nav-item">Logout</a>		
+				<% } else if(currentUser){ %>
+					<a href="#" class="nav-link nav-item ml-2"><%=currentUser.username %></a>
+					<a href="/building-design" class="nav-link nav-item">View Design</a>					
 					<a href="/logout" class="nav-link nav-item">Logout</a>
 				<% } %>	
 			</div>
@@ -48,21 +56,29 @@
     </nav>
 	<div class="container">
 		<% if(error && error.length > 0) {%>
-			<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
+			<div class="mt-1 alert alert-dismissible alert-danger text-center" role="alert"><strong><%=error%></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+    		</button>	
+			</div>
 		<% } %>
 		<% if(success && success.length > 0) {%>
-			<div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
+			<div class="mt-1 alert alert-dismissible alert-success text-center" role="alert"><strong><%=success%></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+    		</button>	
+			</div>
 		<% } %>
     </div>
-    <div class="container mx-auto mb-3" style="width:50%">
-		<form action="/design" method="post">
+    <div class="container mx-auto mt-3" style="width:50%">
+		<form action="/building-design" method="post" enctype="multipart/form-data">
 			<div class="form-group">	
 				<label class="form-control-label" for="dname">Design Name</label>
 				<input class="form-control" type="text" name="name" id="dname">
 			</div>	
 			<div class="form-group">
 				<label class="form-control-label" for="image_url">Image</label>
-				<input class="form-control" type="text" name="image" id="image_url">
+				<input class="form-control" type="file" name="image" value="Upload Image" id="image_url">
 			</div>
 			<div class="form-group">
 				<button class="btn btn-outline-primary">Submit</button>

@@ -76,25 +76,33 @@ router.post('/register', async (req,res) =>{
             username:username,
             password:hashedpassword,
             token:token
-        },function(err,user){ 
+        }, 
+            function(err, user){
                 if(err){
-                    console.log(err);
+                    res.redirect('/register')
                 }else{
-                    const mail = new Mail({
-                    title:'Email Confirmation',
-                    subject:'Confirm Your Email',
-                    body:'Click the link below to confirm your email address',
-                    recipients:email,
-                    token:token            
-                })
-                    console.log(token)
-                    const mailer= new Mailer(mail, configTemplate(mail))
-                    mailer.send();
-                    console.log(mail.token)
-                    mail.save();
-                    res.render('activation')      
+                    res.redirect('/')
                 }
-            })
+            })    
+        // },function(err,user){ 
+        //         if(err){
+        //             console.log(err);
+        //         }else{
+        //             const mail = new Mail({
+        //             title:'Email Confirmation',
+        //             subject:'Confirm Your Email',
+        //             body:'Click the link below to confirm your email address',
+        //             recipients:email,
+        //             token:token            
+        //         })
+        //             console.log(token)
+        //             const mailer= new Mailer(mail, configTemplate(mail))
+        //             mailer.send();
+        //             console.log(mail.token)
+        //             mail.save();
+        //             res.render('activation')      
+        //         }
+        //     })
         };
     })
 
@@ -164,7 +172,7 @@ router.get('/login', function(req,res){
 
 router.post('/login',passport.authenticate('local',
     {
-        successRedirect:'/design',
+        successRedirect:'/building-design',
         failureRedirect:'/login',
         failureFlash:true
     })  ,function(req,res){
@@ -174,7 +182,7 @@ router.post('/login',passport.authenticate('local',
 router.get('/logout', function(req,res){
     req.logout();
     req.flash('success','logged you out');
-    res.redirect('/design')
+    res.redirect('/building-design')
 })
 
 

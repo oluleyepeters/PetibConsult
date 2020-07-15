@@ -60,7 +60,7 @@ middlewareObj.checkownerc=function(req,res,next){
 
 middlewareObj.checkAdmin=function(req,res,next){
     if(req.isAuthenticated()){
-        if(req.user.username === 'oluleyepeters'){
+        if(req.user.username === 'timi'){
             next()
         }else{
             req.flash('error','Permission not granted')

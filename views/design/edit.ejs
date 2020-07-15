@@ -15,15 +15,15 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/nav.css"> 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/landing.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css"> 
 </head>
 <body>
 <div class='body-container'>
 <div class='page-container'>	
 	<nav class="navbar navbar-dark navbar-expand-md nav-bg">
 		<a href="/" class="navbar-brand nav-link nav-item">
-			<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
+			<img src="/images/4.jpg" width="30px" height=30px class="d-inline-block rounded-circle">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" 
 			data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -38,8 +38,14 @@
 				<% if(!currentUser){ %>
 					<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
 					<a href="/register" class="nav-link nav-item">Sign-Up</a>
-				<% } else { %>
-					<a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
+				<% } else if(currentUser && currentUser.username === 'timi' ){ %>
+					<a href="#" class="nav-link nav-item ml-2"><%=currentUser.username %></a>
+					<a href="/building-design/new" class="nav-link nav-item">Add Design</a>		
+					<a href="/building-design" class="nav-link nav-item">View Design</a>							
+					<a href="/logout" class="nav-link nav-item">Logout</a>		
+				<% } else if(currentUser){ %>
+					<a href="#" class="nav-link nav-item ml-2"><%=currentUser.username %></a>
+					<a href="/building-design" class="nav-link nav-item">View Design</a>					
 					<a href="/logout" class="nav-link nav-item">Logout</a>
 				<% } %>	
 			</div>
@@ -47,21 +53,33 @@
     </nav>
 	<div class="container">
 		<% if(error && error.length > 0) {%>
-			<div class="mt-1 alert alert-danger text-center" role="alert"><strong><%=error%></strong></div>
+			<div class="mt-1 alert alert-dismissible alert-danger text-center" role="alert"><strong><%=error%></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+    		</button>	
+			</div>
 		<% } %>
 		<% if(success && success.length > 0) {%>
-			<div class="mt-1 alert alert-success text-center" role="alert"><strong><%=success%></strong></div>
+			<div class="mt-1 alert alert-dismissible alert-success text-center" role="alert"><strong><%=success%></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+    		</button>	
+			</div>
 		<% } %>
     </div>
-    <div class="container mx-auto" style="width:50%" style="align-content:space-between">
+    <div class="container mx-auto mt-3" style="width:50%" style="align-content:space-between">
 		<h3>Edit <%=design.name%></h3>
 		<form action="/building-design/<%= design._id %>?_method=PUT" method="post">
 			<div class="form-group">	
 				<input class="form-control" type="text" name=des[name] id="enter_image_url" value='<%=design.name%>'>
 			</div>		
-			<div class="form-group">
+<!-- 			<div class="form-group">
 				<input class="form-control" type="text" name="des[image]" value="<%=design.image%>">
-			</div>
+			</div> -->
+			<div class="form-group">
+				<label class="form-control-label" for="image_url">Image</label>
+				<input class="form-control" type="file" name="des[image]" value="<%=design.image%>" id="image_url">
+			</div>			
 			<div class="form-group">
 				<button class="btn btn-outline-primary">Submit</button>
 			

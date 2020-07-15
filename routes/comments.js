@@ -16,12 +16,12 @@ router.post('/',middleware.isloggedin, function(req,res){
     Design.findById(req.params.id, function(err,Design){
         if(err){
             console.log(err)
-            res.redirect('/design')
+            res.redirect('/building-design')
         }else{
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
                     req.flash('error','An Error Occurred Try Again')
-                    console.log(err);
+                    res.back()
                 }else{
                     comment.author.id=req.user._id;
                     comment.author.username=req.user.username;
@@ -29,7 +29,7 @@ router.post('/',middleware.isloggedin, function(req,res){
                     Design.comments.push(comment)
                     Design.save();
                     req.flash('success','Comment Created')
-                    res.redirect('/design/'+Design._id)
+                    res.redirect('/building-design/'+Design._id)
                 }
             })
         }
@@ -53,7 +53,7 @@ router.put('/:comment_id',middleware.checkownerc,function(req,res){
         if(err){
             res.redirect('back')
         }else{
-            res.redirect('/design'+ req.params.id)
+            res.redirect('/building-design'+ req.params.id)
         }
     })
 })
@@ -65,7 +65,7 @@ router.delete('/:comment_id',middleware.checkownerc, function(req,res){
         if(err){
             res.redirect('back')
         }else{
-            res.redirect('/design/'+req.params.id)
+            res.redirect('/building-design/'+req.params.id)
         }
     })
 })
