@@ -13,6 +13,10 @@ div.page{
     opacity: 0.6
 }
 
+.navbar-nav a:hover{
+    color: white;
+}
+
 body{
     margin: 0;
     padding: 0;

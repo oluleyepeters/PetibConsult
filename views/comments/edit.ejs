@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/nav.css"> 
 </head>
 <body>
+<div class='body-container'>
+<div class='page-container'>
 	<nav class="navbar navbar-dark navbar-expand-md nav-bg">
 		<a href="/" class="navbar-brand nav-link nav-item">
 			<img src="/images/4.jpg" width="40px" height=40px class="d-inline-block rounded-circle">
@@ -42,7 +44,7 @@
 			</div>
 			<div class="navbar-nav ml-auto">
 				<% if(!currentUser){ %>
-					<a href="/login" data-target='#modalexa' data-toggle='modal' role='button' class="nav-link nav-item">Login</a>
+					<a style="color: white" href="/login" data-target='#modalexa' data-toggle='modal' role='button'>Login</a>
 					<a href="/register" class="nav-link nav-item">Sign-Up</a>
 				<% } else { %>
 					<a href="#" class="nav-link nav-item active ml-2"><%=currentUser.username %></a>
@@ -70,9 +72,11 @@
 			</div>
 		</form>
     </div>
+</div>
     <nav class="footer">
         Contact Us :oluleyepeters@gmail.com
     </nav>
+</div>    
 	<script src="/javascript/jquery-3.3.1.min.js"></script>
 	<script src="/javascript/bootstrap.js"></script>
 	<script src="/javascript/building.js"></script>
