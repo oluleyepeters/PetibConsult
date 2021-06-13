@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var flash = require('connect-flash')
@@ -20,7 +19,21 @@ var commentRoutes = require('./routes/comments'),
     designRoutes = require('./routes/designs'),
     authRoutes = require('./routes/auth')
 
-// seedDB();
+const mongoose = require('mongoose')
+
+const connectionParams = {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+}
+
+mongoose.connect(keys.mongoURI, connectionParams)
+    .then(() => {
+        console.log('Connected to database ')
+    })
+    .catch((err) => {
+        console.error(`Error connecting to the database. \n${err}`);
+    })
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log()
