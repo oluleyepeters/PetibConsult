@@ -70,5 +70,4 @@ router.delete('/:comment_id', middleware.checkownerc, middleware.checkAdmin, fun
     })
 })
 
-
 module.exports = router;

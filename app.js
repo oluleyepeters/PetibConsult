@@ -19,37 +19,25 @@ require('./config/passport');
 var commentRoutes = require('./routes/comments'),
     designRoutes = require('./routes/designs'),
     authRoutes = require('./routes/auth')
-// we are calling in the function that will delete the whole function
+
 // seedDB();
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log()
-// mongoose.connect("mongodb://oluleyepeters:may00m1kun@ds237373.mlab.com:37373/petibconsult")
 app.set('view engine', "ejs")
 // var path = require('path');
-app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public/'));
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
 app.use(flash());
 
-// Configuring our passport
-// app.use(require('express-session')({
-//     Mage:24 * 60 * 60 * 1000,
-//     secret:'wedded',
-//     resave:false,
-//     saveUninitialized:false
-// }));
-
 app.use(session({
-    secret: 'jagaban',
+    secret: keys.SESSION_SECRET,
     saveUninitialized: true,
     resave: true
 }))
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
@@ -61,7 +49,6 @@ app.use((req, res, next) => {
 app.use(authRoutes);
 app.use('/building-design', designRoutes);
 app.use('/building-design/:id/comments', commentRoutes);
-
 
 var PORT = process.env.PORT || 8080;
 app.listen(PORT, (req, res) => {
