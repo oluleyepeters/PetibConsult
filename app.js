@@ -5,7 +5,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var flash = require('connect-flash')
 var methodOverride = require('method-override');
-var session = require('express-session');
+var session = require('cookie-session');
 var passportLocalmongoose = require('passport-local-mongoose')
 var app = express();
 var Design = require('./models/Design');
@@ -30,10 +30,15 @@ app.use(express.static(__dirname + '/public/'));
 app.use(methodOverride('_method'));
 app.use(flash());
 
+// app.use(session({
+//     secret: process.env.secret,
+//     saveUninitialized: true,
+//     resave: true
+// }))
 app.use(session({
-    secret: keys.SESSION_SECRET,
-    saveUninitialized: true,
-    resave: true
+    name: 'session',
+    keys: [keys.cookieKey],
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
 
 app.use(passport.initialize());
