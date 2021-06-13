@@ -1,45 +1,48 @@
 </div>
-    <nav class="footer">
-        Contact Us :oluleyepeters@gmail.com
-    </nav>
-   </div>     
+<nav class="footer">
+    Contact Us :oluleyepeters@gmail.com
+</nav>
+</div>
 </body>
+
 </html>
 
-        <script src="javascript/jquery-3.3.1.min.js"></script>
-        <script src="javascript/bootstrap.js"></script>
-        <script src="javascript/building.js"></script>
-        
-        <div class="modal" aria-hidden='true' aria-labelledby='exa' role='dialog' id='modalexa'>
-            <div class="modal-dialog modal-dialog-centered" role='document'>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="text-left">Login</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <form action="/login" method="POST">
-                    <div class="container">
+<script src="javascript/jquery-3.3.1.min.js"></script>
+<script src="javascript/bootstrap.js"></script>
+<script src="javascript/building.js"></script>
+<script src="javascript/alert.js"></script>
+
+<div class="modal" aria-hidden='true' aria-labelledby='exa' role='dialog' id='modalexa'>
+    <div class="modal-dialog modal-dialog-centered" role='document'>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="text-left">Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/login" method="POST">
+                <div class="container">
                     <div class="form-group">
-                            <label for="modemail">Email</label>
-                            <br>
-                            <input type="text" class="form-control" name="email" placeholder="Email" id="modemail">
+                        <label for="modemail">Email</label>
+                        <br>
+                        <input type="text" class="form-control" name="email" placeholder="Email" id="modemail">
                     </div>
                     <div class="form-group">
                         <label for="modpword">Password</label>
                         <br>
-                        <input type="password" class="form-control" name="password" placeholder="password" id="modpword">
+                        <input type="password" class="form-control" name="password" placeholder="password"
+                            id="modpword">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-sm btn-primary btn-block" id="modbutton" type="submit">Login</button>
-                        <p class="text-center text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>    
+                        <p class="text-center text-sm mb-2"><a href="/forgotpassword">Forgot Password?</a></p>
                     </div>
-                </form>
-                <div>	
-                    <p class="text-center">Dont have an account yet? <a href="/register">Sign Up</a></p>
-                </div>
-                </div>	
-                </div>
+            </form>
+            <div>
+                <p class="text-center">Dont have an account yet? <a href="/register">Sign Up</a></p>
             </div>
         </div>
+    </div>
+</div>
+</div>

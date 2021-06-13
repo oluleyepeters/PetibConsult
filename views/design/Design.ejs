@@ -1,22 +1,29 @@
 <%- include ../partials/header %>
 	<title>2D and 3D Designs: Home. Landscape, Offices etc</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="3D & 2D Home Design, 3D & 2D Office Design, 3D & 2D Landscape Design">
-    <meta name="description" content="Checkout all our 2D and 3D designs. Ranging from Home designs to Landscape to Offices and Shopping Complexes and make the bold decision to contact us">
-<%- include ../partials/headers2 %>
-<%- include ../partials/headers3 %>
-	<div class="container">
-        <div class="row mt-3">
-            <% designs.forEach(function(design){ %>
-        	    <div class="col-sm-3 col-sm-6 col-md-4 col-lg-3 hee mt-3">
-					<h5><%=design.name%></h5>
-                	<img class="img-fluid mb-1" class="heee" src="<%=design.image%>">
-					<a class='btn btn-sm btn-primary text-white' href="/building-design/<%=design._id%>">View</a>
+	<meta name="keywords" content="3D & 2D Home Design, 3D & 2D Office Design, 3D & 2D Landscape Design">
+	<meta name="description"
+		content="Checkout all our 2D and 3D designs. Ranging from Home designs to Landscape to Offices and Shopping Complexes and make the bold decision to contact us">
+	<%- include ../partials/headers2 %>
+		<%- include ../partials/headers3 %>
+			<%- include ../partials/flash %>
+				<div class="container">
+					<div class="row mt-3">
+						<% designs.forEach(function(design){ %>
+							<div class="col-sm-3 col-sm-6 col-md-4 col-lg-3 hee mt-3">
+								<h5>
+									<%=design.name%>
+								</h5>
+								<img class="img-fluid mb-1" class="heee" src="<%=design.image%>">
+								<a class='btn btn-sm btn-primary text-white'
+									href="/building-design/<%=design._id%>">View</a>
+							</div>
+							<% }) %>
+					</div>
+					<br>
+					<br>
 				</div>
-			<% }) %>
-		</div>
-	<br>
-	<br>
-	</div>	
-
-<%- include ../partials/footer %>
+				<button class='btn btn-outline-primary'>
+					<a style="text-decoration: none;" href="/building-design/new">Add Design</a>
+				</button>
+				<%- include ../partials/footer %>
