@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 var express = require('express')
 // merge params is done to make sure that the Design is found
 var router = express.Router({ mergeParams: true });
