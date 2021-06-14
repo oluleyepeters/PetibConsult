@@ -64,7 +64,7 @@ router.put('/:comment_id', middleware.checkownerc, function (req, res) {
 
 
 // ==============================delete comments
-router.delete('/:comment_id', middleware.checkownerc, middleware.checkAdmin, function (req, res) {
+router.delete('/:comment_id', middleware.checkownerc, function (req, res) {
     Comment.findByIdAndRemove(req.params.comment_id, function (err) {
         if (err) {
             res.redirect('back')

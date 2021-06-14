@@ -96,7 +96,7 @@ router.post("/", middleware.isloggedin, function (req, res) {
 })
 
 // ===========================Editing Campground route
-router.get('/:id/edit', middleware.checkowner, middleware.checkAdmin, function (req, res) {
+router.get('/:id/edit', middleware.checkowner, function (req, res) {
     Design.findById(req.params.id, function (err, founddesign) {
         res.render('design/edit', { design: founddesign });
     });
@@ -104,7 +104,7 @@ router.get('/:id/edit', middleware.checkowner, middleware.checkAdmin, function (
 
 
 // =======================================Update route
-router.put('/:id', middleware.checkowner, middleware.checkAdmin, function (req, res) {
+router.put('/:id', middleware.checkowner, function (req, res) {
     Design.findByIdAndUpdate(req.params.id,
         req.body.des, function (err, updated) {
             if (err) {
@@ -116,7 +116,7 @@ router.put('/:id', middleware.checkowner, middleware.checkAdmin, function (req, 
 })
 
 // =====================Destroy design
-router.delete('/:id', middleware.checkowner, middleware.checkAdmin, function (req, res) {
+router.delete('/:id', middleware.checkowner, function (req, res) {
     Design.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.redirect('/building-design')
