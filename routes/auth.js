@@ -60,6 +60,7 @@ router.get('/verify/:token', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
+    console.log(req.body)
     var email = req.body.email
     var username = req.body.username
     var password = req.body.password

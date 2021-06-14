@@ -13,7 +13,6 @@ middlewareObj.isloggedin = function (req, res, next) {
 }
 
 
-
 middlewareObj.checkowner = function (req, res, next) {
     if (req.isAuthenticated()) {
         Design.findById(req.params.id, function (err, founddesign) {

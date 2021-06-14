@@ -5,36 +5,37 @@
     <meta name="description" content="Register and get Professional Services from us.">
     <% include ./partials/headers2 %>
         <% include ./partials/headers3 %>
+            <% include ./partials/flash %>
 
+                <div class="container">
 
-            <div class="container">
-                <div class="w-50 mt-5 mx-auto b-2">
-                    <h5 class='text-center'>SignUp</h5>
-                    <form action="/register" method='POST'>
-                        <div class="form-group">
+                    <div class="w-50 mt-5 mx-auto b-2">
+                        <h5 class='text-center'>SignUp</h5>
+                        <form action="/register" method='post'>
+                            <div class="form-group">
+                                <label for="regemail">Email</label>
+                                <br>
+                                <input type="email" class="form-control" name="email" placeholder="Email" id="regemail">
+                            </div>
+                            <div class="form-group">
 
-                            <label for="regemail">Email</label>
-                            <br>
-                            <input type="email" class="form-control" name="email" placeholder="Email" id="regemail">
-                        </div>
-                        <div class="form-group">
-
-                            <label for="reguname">Username</label>
-                            <br>
-                            <input type="text" class="form-control" name="username" placeholder="Username"
-                                id="reguname">
-                        </div>
-                        <div class="form-group">
-                            <label for="regpword">Password</label>
-                            <br>
-                            <input type="password" class="form-control" name="password" placeholder="Password"
-                                id="regpword">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-sm nav-bg btn-block" id="regbutton" type="submit">Sign Up</button>
-                    </form>
-                    <p class="text-center">Already Registered? <a href="/login">Login</a></p>
+                                <label for="reguname">Username</label>
+                                <br>
+                                <input type="text" class="form-control" name="username" placeholder="Username"
+                                    id="reguname">
+                            </div>
+                            <div class="form-group">
+                                <label for="regpword">Password</label>
+                                <br>
+                                <input type="password" class="form-control" name="password" placeholder="Password"
+                                    id="regpword">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-sm nav-bg btn-block" id="regbutton" type="submit">Sign
+                                    Up</button>
+                        </form>
+                        <p class="text-center">Already Registered? <a href="/login">Login</a></p>
+                    </div>
                 </div>
-            </div>
-            </div>
-            <% include ./partials/footer %>
+                </div>
+                <% include ./partials/footer %>

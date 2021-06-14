@@ -9,24 +9,24 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<div class="navbar-nav">
-					<a href="/aboutUs" class="nav-link nav-item">About Us</a>
-				</div>
 				<div class="navbar-nav ml-auto">
 					<% if(!currentUser){ %>
 						<a href="/login" data-target='#modalexa' data-toggle='modal' role='button'
 							class="nav-link nav-item">Login</a>
 						<a href="/register" class="nav-link nav-item">Sign-Up</a>
+						<a href="/building-design" class="nav-link nav-item">Designs</a>
 						<% } else if(currentUser && currentUser.username==='timi' ){ %>
 							<a href="#" class="nav-link nav-item active ml-2">
 								<%=currentUser.username %>
 							</a>
 							<a href="/building-design/new" class="nav-link nav-item">Add Design</a>
 							<a href="/logout" class="nav-link nav-item">Logout</a>
+							<a href="/building-design" class="nav-link nav-item">Designs</a>
 							<% } else if(currentUser){ %>
 								<a href="#" class="nav-link nav-item active ml-2">
 									<%=currentUser.username %>
 								</a>
+								<a href="/building-design" class="nav-link nav-item">Designs</a>
 								<a href="/logout" class="nav-link nav-item">Logout</a>
 								<% } %>
 				</div>

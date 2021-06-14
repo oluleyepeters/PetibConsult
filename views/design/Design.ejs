@@ -7,10 +7,16 @@
 	<%- include ../partials/headers2 %>
 		<%- include ../partials/headers3 %>
 			<%- include ../partials/flash %>
-				<div class="container">
-					<div class="row mt-3">
+				<div class="container mt-2" style="position: absolute;">
+					<a style="text-decoration: none; font-size: 16px;
+																 position: absolute;
+														" class="btn btn-outline-primary" href="/building-design/new">Add
+						Design</a>
+				</div>
+				<div class="container mt-4">
+					<div class="row">
 						<% designs.forEach(function(design){ %>
-							<div class="col-sm-3 col-sm-6 col-md-4 col-lg-3 hee mt-3">
+							<div class="col-sm-3 col-sm-6 col-md-4 col-lg-3 hee mt-5">
 								<h5>
 									<%=design.name%>
 								</h5>
@@ -18,12 +24,9 @@
 								<a class='btn btn-sm btn-primary text-white'
 									href="/building-design/<%=design._id%>">View</a>
 							</div>
+							<br>
+							<br>
 							<% }) %>
 					</div>
-					<br>
-					<br>
 				</div>
-				<button class='btn btn-outline-primary'>
-					<a style="text-decoration: none;" href="/building-design/new">Add Design</a>
-				</button>
 				<%- include ../partials/footer %>
