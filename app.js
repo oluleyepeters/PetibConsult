@@ -46,7 +46,7 @@ app.use(flash());
 
 app.use(session({
     Mage: 24 * 60 * 60 * 1000,
-    secret: 'wedded',
+    secret: keys.mongoURI,
     resave: false,
     saveUninitialized: false
 }));
